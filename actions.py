@@ -44,7 +44,7 @@ def remove_note(notes_instance):
 
 @action(aliases=('help', 'h', 'actions'))
 def print_actions(**kwargs):
-    print(f'Available commands: {", ".join(act.key for act in actions)}')
+    print(f'Available actions: {", ".join(act.key for act in actions)}')
 
 
 def get_user_action(notes_instance):
@@ -52,4 +52,6 @@ def get_user_action(notes_instance):
     for action in actions:
         if s in action.aliases:
             action.func(notes_instance=notes_instance)
+    else:
+        print('Unrecognized action! Type "help" for available actions.')
 
